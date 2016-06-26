@@ -1,5 +1,18 @@
 module.exports = {
-	"extends": "standard",
+	"extends": [
+		"standard",
+		"plugin:react/recommended"
+	],
+
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+
+	"plugins": [
+		"react"
+	],
 
 	"rules": {
 		"indent": ["error", "tab"]
