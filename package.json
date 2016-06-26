@@ -4,7 +4,9 @@
   "description": "Ad-hoc meetups for social programming",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "unit-tests": "mocha src/**/*spec.js",
+    "lint": "eslint src/",
+    "test": "npm run unit-tests && npm run lint"
   },
   "keywords": [],
   "author": "Jesse Gibson <jesse@gundb.io> (http://techllama.com)",
@@ -16,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/LunaMinds/code-cafe/issues"
   },
-  "homepage": "https://github.com/LunaMinds/code-cafe#readme"
+  "homepage": "https://github.com/LunaMinds/code-cafe#readme",
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "mocha": "^2.5.3"
+  }
 }
