@@ -2,7 +2,7 @@ var join = require('path').join
 
 module.exports = {
 	context: __dirname,
-	entry: './src/Components/Home/index.jsx',
+	entry: join(__dirname, 'src', 'Components', 'Home', 'index.jsx'),
 
 	output: {
 		path: join(__dirname, 'dist'),
@@ -14,7 +14,7 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				exclude: /(node_modules|bower_components)/,
-				loader: 'babel', // 'babel-loader' is also a legal name to reference
+				loader: 'babel',
 				query: {
 					presets: ['es2015', 'react']
 				}
