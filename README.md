@@ -2,6 +2,7 @@
 *A service supporting ad hoc meetings of the minds over food and drink.*
 
 [![Travis branch](https://img.shields.io/travis/LunaMinds/code-cafe/master.svg)](https://travis-ci.org/LunaMinds/code-cafe)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
