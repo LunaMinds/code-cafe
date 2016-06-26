@@ -1,6 +1,10 @@
 # Code Caf&eacute;
 *A service supporting ad hoc meetings of the minds over food and drink.*
 
+[![Travis branch](https://img.shields.io/travis/LunaMinds/code-cafe/master.svg)](https://travis-ci.org/LunaMinds/code-cafe)
+
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
+
 > **Under development**
 
 ## About Code Caf&eacute;
