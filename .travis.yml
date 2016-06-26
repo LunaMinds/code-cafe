@@ -4,4 +4,6 @@ node_js:
   - v4
   - v5
   - v6.2
-  - latest
+
+  # Installs the latest version
+  - node
