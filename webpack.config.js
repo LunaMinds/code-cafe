@@ -8,31 +8,32 @@ module.exports = {
 	entry: [
 		'webpack-dev-server/client?http://0.0.0.0:'.concat(port),
 		'webpack/hot/only-dev-server',
-		join(__dirname, './src/Components/Home/index.js')
+		join(__dirname, './src/Components/index.jsx'),
 	],
 
 	devServer: {
 		inline: true,
-		hot: true
+		hot: true,
+		contentBase: './dist',
 	},
 
 	output: {
 		path: join(__dirname, 'dist'),
 		filename: 'bundle.js',
-		publicPath: '/'
+		publicPath: '/',
 	},
 
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
 	],
 
 	module: {
 		loaders: [
 			{
-				test: /\.js$/,
+				test: /\.jsx?$/,
 				exclude: /(node_modules|bower_components)/,
-				loaders: ['react-hot', 'babel']
-			}
-		]
-	}
+				loaders: ['react-hot', 'babel'],
+			},
+		],
+	},
 }
