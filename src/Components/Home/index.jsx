@@ -2,6 +2,6 @@ import React from 'react'
 
 export default class Home extends React.Component {
 	render () {
-		return <p>ouidht</p>
+		return <h1>Welcome to Code Cafe!</h1>
 	}
 }

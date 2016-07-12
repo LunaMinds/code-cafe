@@ -7,7 +7,7 @@
     "unit-tests": "mocha src/**/*spec.js",
     "lint": "eslint src/**/*.{js,jsx}",
     "test": "npm run unit-tests && npm run lint",
-    "start": "webpack-dev-server --port=3000"
+    "start": "webpack-dev-server"
   },
   "keywords": [],
   "author": "Jesse Gibson <jesse@gundb.io> (http://techllama.com)",

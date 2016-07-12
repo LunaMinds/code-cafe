@@ -1,6 +1,8 @@
 var join = require('path').join
 var webpack = require('webpack')
-var port = process.env.PORT || 3000
+var appConfig = require('./config')
+
+var port = appConfig.port
 
 module.exports = {
 	devtool: 'eval',
@@ -15,6 +17,7 @@ module.exports = {
 		inline: true,
 		hot: true,
 		contentBase: './dist',
+		port: port,
 	},
 
 	output: {
