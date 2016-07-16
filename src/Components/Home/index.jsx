@@ -1,7 +1,13 @@
 import React from 'react'
+import CreateEvent from './../CreateEvent/index.jsx'
 
-export default class Home extends React.Component {
+class Home extends React.Component {
 	render () {
-		return <h1>Welcome to Code Cafe!</h1>
+		return <div>
+			<h1>Welcome to Code Cafe!</h1>
+			<CreateEvent />
+		</div>
 	}
 }
+
+export default Home

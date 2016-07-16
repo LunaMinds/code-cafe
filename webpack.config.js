@@ -34,8 +34,13 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.jsx?$/,
-				exclude: /(node_modules|bower_components)/,
+				exclude: /(node_modules|bower_components|dist)/,
 				loaders: ['react-hot', 'babel'],
+			},
+			{
+				test: /\.css?$/,
+				exclude: /(node_modules|bower_components|dist)/,
+				loaders: ['react-hot', 'style', 'css'],
 			},
 		],
 	},
