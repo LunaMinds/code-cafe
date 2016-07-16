@@ -1,4 +1,6 @@
 # Code Caf&eacute;
+
+[![Join the chat at https://gitter.im/LunaMinds/code-cafe](https://badges.gitter.im/LunaMinds/code-cafe.svg)](https://gitter.im/LunaMinds/code-cafe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 *A service supporting ad hoc meetings of the minds over food and drink.*
 
 [![Travis branch](https://img.shields.io/travis/LunaMinds/code-cafe/master.svg)](https://travis-ci.org/LunaMinds/code-cafe)
