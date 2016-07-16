@@ -1,5 +1,7 @@
 import React from 'react'
-import { render } from 'react-dom'
 
-const app = document.getElementById('app')
-render(<p>Hey from react!</p>, app)
+export default class Home extends React.Component {
+	render () {
+		return <h1>Welcome to Code Cafe!</h1>
+	}
+}
