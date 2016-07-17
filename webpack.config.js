@@ -18,6 +18,8 @@ module.exports = {
 		hot: true,
 		contentBase: './dist',
 		port: port,
+
+		/** Allows connections by ip, not just `localhost`. */
 		host: '0.0.0.0',
 	},
 

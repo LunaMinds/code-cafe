@@ -1,8 +1,11 @@
 import React from 'react'
 import { render } from 'react-dom'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import UIProvider from 'material-ui/styles/MuiThemeProvider'
 
+/**
+ * @see https://github.com/callemall/material-ui#react-tap-event-plugin
+ */
+import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 import Home from './Home/index.jsx'
