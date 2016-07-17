@@ -18,6 +18,7 @@ module.exports = {
 		hot: true,
 		contentBase: './dist',
 		port: port,
+		host: '0.0.0.0',
 	},
 
 	output: {
