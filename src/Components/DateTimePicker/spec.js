@@ -3,15 +3,22 @@ var expect = require('expect')
 var createDateTime = require('./createDateTime').default
 
 describe('createDateTime', function () {
-	describe.skip('given only a time', function () {
+	describe('given only a time', function () {
 		it('should return now with the updated time', function () {
-			expect(true).toBe(true)
+			var time = new Date('1970 01 01 4:20')
+			var newTime = createDateTime({time})
+			expect(newTime.getHours()).toBe(4)
+			expect(newTime.getMinutes()).toBe(20)
 		})
 	})
 
-	describe.skip('given only a date', function () {
+	describe('given only a date', function () {
 		it('should return now with the updated date', function () {
-			expect(true).toBe(true)
+			var date = new Date('2020 12 31')
+			var newDate = createDateTime({date})
+			expect(newDate.getFullYear()).toBe(2020)
+			expect(newDate.getMonth()).toBe(11) // 'cause JS month off by one
+			expect(newDate.getDate()).toBe(31)
 		})
 	})
 

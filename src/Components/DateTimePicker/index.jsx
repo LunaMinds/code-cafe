@@ -35,11 +35,19 @@ class DateTimePicker extends Component {
 	}
 
 	setDate (event, date) {
-		this.setDateTime(createDateTime({date, time: this.state.dateTime}))
+		const dateTime = createDateTime({
+			date, time: this.state.dateTime,
+		})
+
+		this.setDateTime(dateTime)
 	}
 
 	setTime (event, time) {
-		this.setDateTime(createDateTime({date: this.state.dateTime, time}))
+		const dateTime = createDateTime({
+			date: this.state.dateTime, time,
+		})
+
+		this.setDateTime(dateTime)
 	}
 
 	setDateTime (dateTime) {
