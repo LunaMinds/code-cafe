@@ -1,12 +1,17 @@
 {
+  "NOTES": {
+    "react and react-dom locked into specific version": "due to https://github.com/zilverline/react-tap-event-plugin/issues/85"
+  },
+  "TODO": {
+    "unlock": "react and react-dom"
+  },
   "name": "code-cafe",
   "version": "0.0.1",
   "description": "Ad-hoc meetups for social programming",
   "main": "src/Server/index.js",
   "scripts": {
-    "unit-tests": "mocha src/**/*spec.js --opts ./mocha.opts",
+    "test": "mocha src/**/*spec.js --opts ./mocha.opts",
     "lint": "eslint src/**/*.{js,jsx}",
-    "test": "npm run unit-tests && npm run lint",
     "start": "webpack-dev-server"
   },
   "keywords": [],

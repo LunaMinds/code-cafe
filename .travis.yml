@@ -7,3 +7,9 @@ node_js:
 
   # Installs the latest version
   - node
+
+script:
+  # could be concatenated, but Travis gives better feedback
+  # when commands are seperated
+  - npm run test
+  - npm run lint
