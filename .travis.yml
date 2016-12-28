@@ -14,3 +14,4 @@ deploy:
   app: code-cafe-io
   on:
     repo: LunaMinds/code-cafe
+    branch: master
