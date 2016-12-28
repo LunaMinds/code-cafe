@@ -1,16 +1,21 @@
 language: node_js
+
 node_js:
-- v4
-- v5
-- v6.2
-- node
+  - 4
+  - 5
+  - 6
+
+  # Installs the latest version
+  - node
+
 script:
 - npm run test
 - npm run lint
 deploy:
   provider: heroku
   api_key:
-    secure: qjrZMvYWeP0dPJEQmPaD7SE8eJlTgE6JXTkciEnQ0SYTHwfuNnSn+iCSnjz4ldU/Lc/uHJZectTkZm7mPVfsMXxPsO6ainX2gIS73WvHOEZr67e1BZXoqviSfj1DKWWcIEXlZGWkVdeCFWHGQeMuOQHR8h4A4e3IhQMP7yIV7Q7qArs8cDaw/q6F/3fZqnnMkRnf2WBku63avUq3zXCPTaBvm8hNxiXMdbYBSoQR9vBRGMLuMORav2MLOkUX466tnqHX3uMWREhhiLzFKM5FMlUCof0m2y0PtMknUGljLD80Pw4LF6aszddPFeSDLW2eRIuWmvBciyZ4ng5m1a86eUxFeo8jLI9uXqkqNP8P13XbsJvYeoh73w+HqVsmOjZmATtD/HymTp6nBfGEwlo+mCqslD4gJW6aixdNPdDezgaKUKAYn+DHGj2n1QZTBHQPWO6mRTDo1B3R7OzJLy7Jlha3s05yuipqoi85sRzepCgaioW3tM4aDJlNB8Q0dGDv5Tg/CMjlVd6iEz079mE2othgueHzP45RRIWaIJeWHXoECSx4hFOfwdH4fC35JR7SSdZZume8tvlnNiNusKL4VrSsdTOq+HXh5STMfMJv2Jd7N75fPpk61BRPzQDdWFbHMc8pXpbhRyobTNtoxYjJZ/KtbuAd2vbcZdc/676rnx0=
+    secure: vK33SmpM+JZICJli5NiqZT1U8TN9IfSW8ckkrranRFrO40fKSOeE7oA2gtGPHmDxKb17JB0vKmYiDSHONUJEsh9H7QmvCsaDAIrR1p8hCue09F2lmMCF0Cbe5s6tJuKBl1k0Ylgs6LO4CPxSPLTUNykpGinec/DBQY3w+JuraOq1kigjXEvDOXu2pm9f3qf1ONxpDpR9H70mlMCILeJxDBxClgFZtc5RiPMd5Q/IGOEQd9hjyKCrEZW2KBLVbU+8YAHxRO57pRypJFqwnw/a0n6kr9VvqBRW4dQgEbGWS6lA1xFTVCB2eG6oLqHBCtg9UjFskdbyC3Yku89ONl3yEkDIUp0f6UPvDMSQlRoY9EX2CPDapqFOamtcjX/GBMinoa0pLCzbMRjYhEyiZ4gxKneCSj+0XPqQaynXwJyA3UdPg2ow+tfUa6hPukTm+I/7Rc6475IXtpRpIZzdCIVZ14tEjiRToCoqQAbeGvV+ZbELq01fRathPaWvINJGFi9H6WWCuFrBAFtvvViuGAxlzWF2tDFA9a72c8Gc8Kg7fK0dmItYrjXAaPdVhRiA061vgff672dusDGagGnHNTx9X5jVCEbcJKr6A3Bc8nYZSBQMUQ2vgqE/A9NRH4D2kJt6EiP6s/E9n/p74xkMAuJ2Qx0JLaXdP8u34zMYs14HsAI=
   app: code-cafe-io
   on:
     repo: LunaMinds/code-cafe
+    branch: master
