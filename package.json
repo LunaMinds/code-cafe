@@ -12,7 +12,8 @@
   "scripts": {
     "test": "mocha src/**/*spec.js --opts ./mocha.opts",
     "lint": "eslint src/**/*.{js,jsx}",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "postinstall": "npm start"
   },
   "keywords": [],
   "author": "Jesse Gibson <jesse@gundb.io> (http://techllama.com)",
