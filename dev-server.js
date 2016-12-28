@@ -8,9 +8,9 @@ var port = appConfig.port
 new WebpackDevServer(webpack(WebpackConfig), {
 	publicPath: WebpackConfig.output.publicPath,
 	hot: true,
-}).listen(port, 'localhost', function (err, result) {
+}).listen(port, function (err, result) {
 	if (err) {
 		return console.log(err)
 	}
-	console.log('Listening on port ' + port)
+	console.log('Listening on port', port)
 })
