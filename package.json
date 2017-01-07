@@ -15,7 +15,8 @@
     "dev": "node dev-server.js",
     "build": "webpack",
     "postinstall": "npm run build",
-    "start": "node server.js"
+    "start": "node server.js",
+    "nightwatch": "nightwatch"
   },
   "keywords": [],
   "author": "Jesse Gibson <jesse@gundb.io> (http://techllama.com)",
@@ -51,5 +52,8 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {
+    "nightwatch": "^0.9.12"
   }
 }
