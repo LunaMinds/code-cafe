@@ -19,7 +19,9 @@ We want everyone to be able to contribute, even if it's just to add contribution
 NOTE: The following instructions assume you already have node and git installed locally.
 
 1. With the following exception, follow the [instructions to locally install Selenium for Nightwatch.js](http://nightwatchjs.org/getingstarted#selenium-server-setup)   
-**EXCEPTION: The `selenium-server-standalone-{VERSION}.jar` should be in the _user's home directory_ (i.e. `~/selenium-server-standalone-{VERSION}.jar`)**
+**EXCEPTIONS:  
+  - Install `selenium-server-standalone-3.0.1.jar
+  - The `selenium-server-standalone-3.0.1.jar` should be in the _user's home directory_ (i.e. `~/selenium-server-standalone-3.0.1.jar`)**
 
 2. In github, fork the [https://github.com/LunaMinds/code-cafe](https://github.com/LunaMinds/code-cafe#fork-destination-box) repository.
 
