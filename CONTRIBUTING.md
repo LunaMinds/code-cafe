@@ -11,5 +11,20 @@ We want everyone to be able to contribute, even if it's just to add contribution
 * We're using a [customized version](https://github.com/LunaMinds/code-cafe/blob/master/.eslintrc.js) of [feross](http://feross.org/)' **[Standard](https://github.com/feross/eslint-config-standard)**[ - ESLint Shareable Config](https://github.com/feross/eslint-config-standard).
 * **Pull requests** are welcome and encouraged!  
   * Please note that all pull requests must include related tests and [JSDoc](http://usejsdoc.org/index.html)umentation, pass Travis-CI tests, and will be reviewed by an approved contributor before they will be merged into the 'master' branch.
-  * **Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github) 
+  * **Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 * Ask any **questions**, post any **problems**, and make **feature requests** in [issues](https://github.com/LunaMinds/code-cafe/issues).  (You can even post an issue requesting that we activate a [Gitter channel](https://gitter.im) for chatting.)
+
+## Setting up your local development environment
+
+NOTE: The following instructions assume you already have node and git installed locally.
+
+1. With the following exception, follow the [instructions to locally install Selenium for Nightwatch.js](http://nightwatchjs.org/getingstarted#selenium-server-setup)   
+**EXCEPTION: The `selenium-server-standalone-{VERSION}.jar` should be in the _user's home directory_ (i.e. `~/selenium-server-standalone-{VERSION}.jar`)**
+
+2. In github, fork the [https://github.com/LunaMinds/code-cafe](https://github.com/LunaMinds/code-cafe#fork-destination-box) repository.
+
+3. `git clone` your newly forked version.
+
+4. Install nightwatch globally via `npm install -g nightwatch` _OR_ `yarn add global nightwatch`.
+
+5. Install all packages via `npm install` _OR_ `yarn`.
