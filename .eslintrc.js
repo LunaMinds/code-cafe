@@ -15,6 +15,8 @@ module.exports = {
 	],
 
 	"rules": {
-		"indent": ["error", "tab"]
+		"indent": ["error", "tab"],
+		"comma-dangle": ["error", "always-multiline"],
+		"no-tabs": "off"
 	}
-};
+}

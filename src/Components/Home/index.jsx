@@ -1,5 +1,17 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React, { Component } from 'react'
+import DateTimeRange from '../DateTimeRange/index.jsx'
+import CreateEvent from '../CreateEvent/index.jsx'
 
-const app = document.getElementById('app')
-render(<p>Hey from react!</p>, app)
+class Home extends Component {
+	render () {
+		return <div>
+			<h1>Welcome to Code Cafe.</h1>
+
+			<DateTimeRange />
+			<hr></hr>
+			<CreateEvent />
+		</div>
+	}
+}
+
+export default Home
