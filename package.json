@@ -15,7 +15,7 @@
     "dev": "node dev-server.js",
     "build": "webpack",
     "postinstall": "npm run build",
-    "start": "node server.js",
+    "start": "node prod-server.js",
     "nightwatch": "nightwatch"
   },
   "keywords": [],
