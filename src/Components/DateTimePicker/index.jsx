@@ -3,9 +3,11 @@ import TimePicker from 'material-ui/TimePicker'
 import DatePicker from 'material-ui/DatePicker'
 import createDateTime from './createDateTime'
 
+console.log('DateTimePicker is:', DateTimePicker)
+
 class DateTimePicker extends Component {
-	contructor () {
-		super()
+	constructor (props) {
+		super(props)
 
 		const now = new Date()
 
@@ -22,13 +24,15 @@ class DateTimePicker extends Component {
 			<DatePicker
 				minDate={now}
 				defaultDate={this.state.dateTime}
-				onChange={(event, date) => this.setState({ date })}
+				onChange={(event, date) =>
+					this.setState({ date })}
 				/>
 
 			<TimePicker
 				pedantic={true}
 				defaultTime={this.state.dateTime}
-				onChange={(event, time) => this.setState({ time })}
+				onChange={(event, time) =>
+					this.setTime({ time })}
 				/>
 
 		</div>
