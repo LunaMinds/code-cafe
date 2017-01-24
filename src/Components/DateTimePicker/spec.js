@@ -1,19 +1,9 @@
 /* eslint-env mocha */
 import React from 'react'
 import expect, { createSpy } from 'expect'
-import { mount } from 'enzyme'
-import proxyquire from 'proxyquire'
+import { shallow } from 'enzyme'
 import createDateTime from './createDateTime'
-
-const mock = {
-	TimePicker: createSpy().andReturn(<div/>),
-	DatePicker: createSpy().andReturn(<div/>),
-}
-const stubby = proxyquire.noCallThru()
-const DateTimePicker = stubby('./index', {
-	'material-ui/TimePicker': mock.TimePicker,
-	'material-ui/DatePicker': mock.DatePicker,
-}).default
+import DateTimePicker from './index'
 
 describe('The createDateTime utility', function () {
 	context('given only a time', function () {
@@ -53,24 +43,10 @@ describe('<DateTimePicker />', function () {
 	it('should report time changes', () => {
 		// mock out the onChange of the main component
 		const spy = createSpy()
-		mount(<DateTimePicker onChange={spy}/>)
+		const picker = shallow(<DateTimePicker onChange={spy} />)
 
-		// set var to capture mock's props
-		const props = mock.TimePicker.calls[0].arguments[0]
-
-		// log the last call to our spy
-		console.log('pre-spy:', spy.calls[spy.calls.length - 1] || 'is currently undefined')
-
-		// actual assertion that our spy has not yet been called
 		expect(spy).toNotHaveBeenCalled()
-
-		// do the awesomeness
-		props.onChange()
-
-		// again, log the last call to our spy
-		console.log('post-spy:', spy.calls[spy.calls.length - 1].arguments)
-
-		// actual assertion that our spy has now been called
+		picker.find('TimePicker').simulate('change')
 		expect(spy).toHaveBeenCalled()
 	})
 })
