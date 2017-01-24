@@ -8,6 +8,7 @@
   "main": "src/Server/index.js",
   "scripts": {
     "test": "mocha src/**/*spec.js --opts ./mocha.opts --require ./tests/jsdom-setup.js",
+    "tdd": "npm test -- --watch --reporter min",
     "lint": "eslint src/**/*.{js,jsx}",
     "dev": "node dev-server.js",
     "build": "webpack",
