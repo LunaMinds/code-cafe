@@ -22,21 +22,21 @@ class DateTimePicker extends Component {
 			<DatePicker
 				minDate={now}
 				defaultDate={this.state.dateTime}
-				onChange={(event, date) =>
-					this.setState({ date })}
-				/>
+				onChange={ (event, date) =>
+					this.setDate(date)
+				} />
 
 			<TimePicker
 				pedantic={true}
 				defaultTime={this.state.dateTime}
-				onChange={(event, time) =>
-					this.setTime({ time })}
-				/>
+				onChange={ (event, time) =>
+					this.setTime(time)
+				} />
 
 		</div>
 	}
 
-	setDate (event, date) {
+	setDate (date) {
 		const dateTime = createDateTime({
 			date, time: this.state.dateTime,
 		})
@@ -44,7 +44,7 @@ class DateTimePicker extends Component {
 		this.setDateTime(dateTime)
 	}
 
-	setTime (event, time) {
+	setTime (time) {
 		const dateTime = createDateTime({
 			date: this.state.dateTime, time,
 		})
