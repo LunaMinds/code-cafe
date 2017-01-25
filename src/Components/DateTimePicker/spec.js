@@ -2,51 +2,62 @@
 import React from 'react'
 import expect, { createSpy } from 'expect'
 import { shallow } from 'enzyme'
-import createDateTime from './createDateTime'
 import DateTimePicker from './index'
 
-describe('The createDateTime utility', function () {
-	context('given only a time', function () {
-		it('should return now with the updated time', function () {
-			const time = new Date('1970 01 01 4:20')
-			const newTime = createDateTime({time})
-			expect(newTime.getHours()).toBe(4)
-			expect(newTime.getMinutes()).toBe(20)
-		})
-	})
-
-	context('given only a date', function () {
-		it('should return now with the updated date', function () {
-			const date = new Date('2020 12 31')
-			const newDate = createDateTime({date})
-			expect(newDate.getFullYear()).toBe(2020)
-			expect(newDate.getMonth()).toBe(11) // 'cause JS month off by one
-			expect(newDate.getDate()).toBe(31)
-		})
-	})
-
-	context('given a date and time', function () {
-		it('should return a new date time', function () {
-			const date = new Date('2020 12 31')
-			const time = new Date('1970 01 01 4:20')
-			const newDateTime = createDateTime({date, time})
-			expect(newDateTime.getFullYear()).toBe(2020)
-			expect(newDateTime.getMonth()).toBe(11) // 'cause JS month off by one
-			expect(newDateTime.getDate()).toBe(31)
-			expect(newDateTime.getHours()).toBe(4)
-			expect(newDateTime.getMinutes()).toBe(20)
-		})
-	})
-})
-
 describe('<DateTimePicker />', function () {
-	it('should report time changes', () => {
-		// mock out the onChange of the main component
-		const spy = createSpy()
-		const picker = shallow(<DateTimePicker onChange={spy} />)
+	let spy, picker
 
+	beforeEach('setup spy and picker', () => {
+		// mock out the onChange of the main component
+		spy = createSpy()
+		picker = shallow(<DateTimePicker onChange={spy} />)
+	})
+
+	it('should report time changes', () => {
 		expect(spy).toNotHaveBeenCalled()
 		picker.find('TimePicker').simulate('change')
 		expect(spy).toHaveBeenCalled()
+	})
+
+	it('should report date changes', () => {
+		expect(spy).toNotHaveBeenCalled()
+		picker.find('DatePicker').simulate('change')
+		expect(spy).toHaveBeenCalled()
+	})
+
+	it('should report correct date on change', () => {
+		const date = new Date('2020 12 31')
+
+		picker.find('DatePicker').props().onChange(null, date)
+		const updatedDate = spy.calls[0].arguments[0]
+
+		expect(updatedDate.getFullYear()).toBe(2020)
+		expect(updatedDate.getMonth()).toBe(11) // 'cause JS month off by one
+		expect(updatedDate.getDate()).toBe(31)
+	})
+
+	it('should return now with the updated time', () => {
+		const time = new Date('1970 01 01 4:20')
+
+		picker.find('TimePicker').props().onChange(null, time)
+		const updatedTime = spy.calls[0].arguments[0]
+
+		expect(updatedTime.getHours()).toBe(4)
+		expect(updatedTime.getMinutes()).toBe(20)
+	})
+
+	it('should report both date & time changes', () => {
+		const date = new Date('2020 12 31')
+		const time = new Date('1970 01 01 4:20')
+
+		picker.find('DatePicker').props().onChange(null, date)
+		picker.find('TimePicker').props().onChange(null, time)
+		const updatedDateTime = spy.calls[1].arguments[0]
+
+		expect(updatedDateTime.getFullYear()).toBe(2020)
+		expect(updatedDateTime.getMonth()).toBe(11) // 'cause JS month off by one
+		expect(updatedDateTime.getDate()).toBe(31)
+		expect(updatedDateTime.getHours()).toBe(4)
+		expect(updatedDateTime.getMinutes()).toBe(20)
 	})
 })
