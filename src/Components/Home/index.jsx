@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DateTimeRange from '../DateTimeRange/index.jsx'
+import DateTimePicker from '../DateTimePicker/index.jsx'
 import CreateEvent from '../CreateEvent/index.jsx'
 
 class Home extends Component {
@@ -7,7 +7,7 @@ class Home extends Component {
 		return <div>
 			<h1>Welcome to Code Cafe.</h1>
 
-			<DateTimeRange />
+			<DateTimePicker onChange={console.log} />
 			<hr></hr>
 			<CreateEvent />
 		</div>
