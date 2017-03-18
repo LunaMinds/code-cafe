@@ -3,7 +3,6 @@ import TimePicker from 'material-ui/TimePicker'
 import DatePicker from 'material-ui/DatePicker'
 
 class DateTimeRange extends Component {
-
 	constructor () {
 		super()
 
@@ -20,36 +19,36 @@ class DateTimeRange extends Component {
 		return <div>
 
 			<DatePicker minDate={now}
-				onChange={this.setDate.bind(this)} />
+				onChange={this.setDate} />
 
 			<TimePicker
 				defaultTime={this.state.startDate}
 				pedantic={true}
-				onChange={this.startTime.bind(this)}
+				onChange={this.startTime}
 				/>
 
 			<TimePicker
 				defaultTime={this.state.endDate}
 				pedantic={true}
-				onChange={this.endTime.bind(this)}
+				onChange={this.endTime}
 				/>
 
 		</div>
 	}
 
-	setDate (event, eventDate) {
+	setDate = (event, eventDate) => {
 		this.setState(() => {
 			return { eventDate }
 		})
 	}
 
-	startTime (event, startTime) {
+	startTime = (event, startTime) => {
 		this.setState(() => {
 			return { startTime }
 		})
 	}
 
-	endTime (event, endTime) {
+	endTime = (event, endTime) => {
 		this.setState(() => {
 			return { endTime }
 		})

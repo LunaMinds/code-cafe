@@ -1,22 +1,24 @@
-module.exports = {
-	"extends": [
-		"standard",
-		"plugin:react/recommended"
-	],
+const eslint = exports
 
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		}
+eslint.extends = [
+	'standard',
+	'plugin:react/recommended',
+]
+
+eslint.parser = 'babel-eslint'
+
+eslint.plugins = [
+	'react',
+]
+
+eslint.rules = {
+	'comma-dangle': ['error', 'always-multiline'],
+	'indent': ['error', 'tab'],
+	'no-tabs': 'off',
+}
+
+eslint.parserOptions = {
+	'ecmaFeatures': {
+		'jsx': true,
 	},
-
-	"plugins": [
-		"react"
-	],
-
-	"rules": {
-		"indent": ["error", "tab"],
-		"comma-dangle": ["error", "always-multiline"],
-		"no-tabs": "off"
-	}
 }
