@@ -22,12 +22,12 @@ class DateTimePicker extends Component {
 			<DatePicker
 				minDate={now}
 				defaultDate={this.state.dateTime}
-				onChange={ this.setDate } />
+				onChange={this.setDate} />
 
 			<TimePicker
 				pedantic={true}
 				defaultTime={this.state.dateTime}
-				onChange={ this.setTime } />
+				onChange={this.setTime} />
 
 		</div>
 	}
