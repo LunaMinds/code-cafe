@@ -1,59 +1,33 @@
 import React, { Component } from 'react'
-import TimePicker from 'material-ui/TimePicker'
-import DatePicker from 'material-ui/DatePicker'
+import DateTimePicker from '../DateTimePicker/index.jsx'
+
+const noop = () => {}
 
 class DateTimeRange extends Component {
-	constructor () {
-		super()
-
-		this.state = {
-			eventDate: new Date(),
-			startTime: new Date(),
-			endTime: new Date(),
-		}
-	}
-
 	render () {
-		const now = new Date()
+		const defaultStartTime = new Date()
+		const defaultEndTime = new Date(defaultStartTime.getTime())
 
-		return <div>
+		// FIXME: Subject to horrible time zone bugs.
+		// Please replace with moment.js.
+		defaultEndTime.setHours(defaultStartTime.getHours() + 1)
 
-			<DatePicker minDate={now}
-				onChange={this.setDate} />
-
-			<TimePicker
-				defaultTime={this.state.startDate}
-				pedantic={true}
-				onChange={this.startTime}
+		return (
+			<div>
+				<DateTimePicker
+					defaultDateTime={defaultStartTime}
+					onChange={noop}
+					key="start"
 				/>
 
-			<TimePicker
-				defaultTime={this.state.endDate}
-				pedantic={true}
-				onChange={this.endTime}
+				<DateTimePicker
+					defaultDateTime={defaultEndTime}
+					onChange={noop}
+					key="end"
 				/>
-
-		</div>
+			</div>
+		)
 	}
-
-	setDate = (event, eventDate) => {
-		this.setState(() => {
-			return { eventDate }
-		})
-	}
-
-	startTime = (event, startTime) => {
-		this.setState(() => {
-			return { startTime }
-		})
-	}
-
-	endTime = (event, endTime) => {
-		this.setState(() => {
-			return { endTime }
-		})
-	}
-
 }
 
 export default DateTimeRange
