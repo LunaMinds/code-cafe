@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import DateTimePicker from '../DateTimePicker/index.jsx'
 import moment from 'moment'
+
+import DateTimePicker from '../DateTimePicker/index.jsx'
 
 const noop = () => {}
 
@@ -8,7 +9,7 @@ class DateTimeRange extends Component {
 	render () {
 		const defaultStartTime = moment()
 
-		const defaultEndTime = moment(defaultStartTime).subtract(1, 'h')
+		const defaultEndTime = moment(defaultStartTime).add(1, 'h')
 
 		return (
 			<div>
