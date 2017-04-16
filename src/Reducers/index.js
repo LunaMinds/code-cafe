@@ -2,8 +2,9 @@ export default (state = {}, action) => {
 	switch (action.type) {
 	case 'SET_EVENT_TIMES':
 		return {
-			start: action.start,
-			end: action.end,
+			...state,
+			start: action.start || state.start,
+			end: action.end || state.end,
 		}
 	default:
 		return state
