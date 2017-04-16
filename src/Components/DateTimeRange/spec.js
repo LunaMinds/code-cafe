@@ -1,15 +1,18 @@
 /* eslint-env mocha */
-import DateTimeRange from './index'
-import { shallow } from 'enzyme'
-import expect from 'expect'
 import React from 'react'
+import expect from 'expect'
+import { shallow } from 'enzyme'
+
+import { DateTimeRange } from './index'
 
 describe('<DateTimeRange>', () => {
 	let props, range
 	const setup = () => shallow(<DateTimeRange {...props} />)
 
 	beforeEach(() => {
-		props = {}
+		props = {
+			setEventTimes: expect.createSpy(),
+		}
 
 		range = setup()
 	})
