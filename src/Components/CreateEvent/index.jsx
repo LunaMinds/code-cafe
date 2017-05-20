@@ -1,11 +1,14 @@
 import React from 'react'
+import DateTimeRange from '../DateTimeRange/index.jsx'
 import './style.css'
 
 export default class CreateEvent extends React.Component {
 	render () {
 		return <div>
-			<h1>Create a new Event</h1>
 			<form>
+				<label htmlFor="eventName">Event Name</label>
+				<input name="eventName" type="text"/>
+				<br />
 				<label htmlFor='area'>Meeting Area</label>
 				<select name='area'>
 					<option value='val-01'>Value 01</option>
@@ -16,11 +19,7 @@ export default class CreateEvent extends React.Component {
 					<option value='val-01'>Value 01</option>
 				</select>
 				<br />
-				<label htmlFor='start'>Start</label>
-				<input name='start' type='datetime-local'></input>
-				<br />
-				<label htmlFor='end'>End</label>
-				<input name='end' type='datetime-local'></input>
+					<DateTimeRange />
 				<br />
 				<label htmlFor='max-people'>Maximum Attendees</label>
 				<input name='max-people' type='number'></input>

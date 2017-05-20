@@ -3,3 +3,8 @@ export const setEventTimes = (start, end) => ({
 	start,
 	end,
 })
+
+export const setEventName = (name) => ({
+	type: 'SET_EVENT_NAME',
+	name,
+})

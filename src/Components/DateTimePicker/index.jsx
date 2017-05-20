@@ -22,12 +22,14 @@ class DateTimePicker extends Component {
 			<DatePicker
 				minDate={now}
 				defaultDate={this.state.dateTime}
-				onChange={this.setDate} />
+				onChange={this.setDate}
+				id={this.props.id + 'date'} />
 
 			<TimePicker
 				pedantic={true}
 				defaultTime={this.state.dateTime}
-				onChange={this.setTime} />
+				onChange={this.setTime}
+				id={this.props.id + 'time'} />
 
 		</div>
 	}
@@ -55,6 +57,7 @@ class DateTimePicker extends Component {
 }
 
 DateTimePicker.propTypes = {
+	id: React.PropTypes.string.isRequired,
 	onChange: React.PropTypes.func.isRequired,
 	defaultDateTime: React.PropTypes.object,
 }

@@ -5,6 +5,10 @@ export default (state = {}, action) => {
 			start: action.start,
 			end: action.end,
 		}
+	case 'SET_EVENT_NAME':
+		return {
+			name: action.name,
+		}
 	default:
 		return state
 	}

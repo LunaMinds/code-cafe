@@ -26,13 +26,13 @@ export class DateTimeRange extends Component {
 					defaultDateTime={defaultStartTime.toDate()}
 					onChange={noop}
 					key="start"
-				/>
+					id="start-dt" />
 
 				<DateTimePicker
 					defaultDateTime={defaultEndTime.toDate()}
 					onChange={noop}
 					key="end"
-				/>
+					id="end-dt" />
 			</div>
 		)
 	}

@@ -16,4 +16,14 @@ describe('reducer', () => {
 			end,
 		})
 	})
+
+	it('sets event name', () => {
+		const name = 'Biggest Bacon Binge in the Known and Unknown Universe'
+		const action = Actions.setEventName(name)
+		const state = reducer(undefined, action)
+
+		expect(state).toEqual({
+			name,
+		})
+	})
 })
