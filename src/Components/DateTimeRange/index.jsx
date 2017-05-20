@@ -5,40 +5,71 @@ import { connect } from 'react-redux'
 import DateTimePicker from '../DateTimePicker/index.jsx'
 import { setEventTimes } from '../../Actions/index.js'
 
-const noop = () => {}
-
 // exported for testing purposes
 export class DateTimeRange extends Component {
 	static propTypes = {
 		setEventTimes: PropTypes.func.isRequired,
+		start: PropTypes.number,
+		end: PropTypes.number,
+	}
+
+	componentWillMount () {
+		const defaultDateTimes = this.getDefaultDateTimes()
+
+		this.props.setEventTimes(defaultDateTimes)
 	}
 
 	render () {
-		const defaultStartTime = moment()
+		const defaultDateTimes = this.getDefaultDateTimes()
 
-		const defaultEndTime = moment(defaultStartTime).add(1, 'h')
+		const dateTimes = {
+			start: this.props.start || defaultDateTimes.start,
+			end: this.props.end || defaultDateTimes.end,
+		}
 
-		this.props.setEventTimes(defaultStartTime, defaultEndTime)
+		const start = new Date(dateTimes.start)
+		const end = new Date(dateTimes.end)
 
 		return (
 			<div>
 				<DateTimePicker
-					defaultDateTime={defaultStartTime.toDate()}
-					onChange={noop}
-					key="start"
+					onChange={this.setStartDateTime}
+					defaultDateTime={start}
+					value={start}
 					id="start-dt" />
 
 				<DateTimePicker
-					defaultDateTime={defaultEndTime.toDate()}
-					onChange={noop}
-					key="end"
+					onChange={this.setEndDateTime}
+					defaultDateTime={end}
+					value={end}
 					id="end-dt" />
 			</div>
 		)
 	}
+
+	getDefaultDateTimes () {
+		const startTime = moment()
+		const endTime = moment(startTime).add(1, 'h')
+
+		return {
+			start: Number(startTime),
+			end: Number(endTime),
+		}
+	}
+
+	setStartDateTime = (start) => {
+		this.props.setEventTimes({start: start.getTime()})
+	}
+
+	setEndDateTime = (end) => {
+		this.props.setEventTimes({end: end.getTime()})
+	}
 }
 
-const select = (state) => ({})
+const select = (state) => ({
+	start: state.start,
+	end: state.end,
+})
 
 // Decorator
 // exported as app function

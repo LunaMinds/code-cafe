@@ -17,21 +17,21 @@ class DateTimePicker extends Component {
 	render () {
 		const now = new Date()
 
-		return <div>
+		return (
+			<div>
+				<DatePicker
+					minDate={now}
+					defaultDate={this.state.dateTime}
+					onChange={this.setDate}
+					id={this.props.id + 'date'} />
 
-			<DatePicker
-				minDate={now}
-				defaultDate={this.state.dateTime}
-				onChange={this.setDate}
-				id={this.props.id + 'date'} />
-
-			<TimePicker
-				pedantic={true}
-				defaultTime={this.state.dateTime}
-				onChange={this.setTime}
-				id={this.props.id + 'time'} />
-
-		</div>
+				<TimePicker
+					pedantic={true}
+					defaultTime={this.state.dateTime}
+					onChange={this.setTime}
+					id={this.props.id + 'time'} />
+			</div>
+		)
 	}
 
 	setDate = (event, date) => {
