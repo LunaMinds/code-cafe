@@ -7,6 +7,11 @@ eslint.extends = [
 
 eslint.parser = 'babel-eslint'
 
+eslint.env = {
+	browser: true,
+	mocha: true,
+}
+
 eslint.plugins = [
 	'react',
 ]

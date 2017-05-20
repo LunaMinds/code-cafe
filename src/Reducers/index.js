@@ -8,6 +8,7 @@ export default (state = {}, action) => {
 		}
 	case 'SET_EVENT_NAME':
 		return {
+			...state,
 			name: action.name,
 		}
 	default:
