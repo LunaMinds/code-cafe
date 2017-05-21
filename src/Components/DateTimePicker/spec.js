@@ -5,31 +5,36 @@ import { shallow } from 'enzyme'
 import DateTimePicker from './index'
 
 describe('<DateTimePicker />', function () {
-	let spy, picker
+	let props, picker
+	const setup = () => shallow(<DateTimePicker {...props} />)
 
 	beforeEach('setup spy and picker', () => {
 		// mock out the onChange of the main component
-		spy = createSpy()
-		picker = shallow(<DateTimePicker onChange={spy} />)
+		props = {
+			id: 'date-time-picker',
+			onChange: createSpy(),
+		}
+
+		picker = setup()
 	})
 
 	it('should report time changes', () => {
-		expect(spy).toNotHaveBeenCalled()
+		expect(props.onChange).toNotHaveBeenCalled()
 		picker.find('TimePicker').simulate('change')
-		expect(spy).toHaveBeenCalled()
+		expect(props.onChange).toHaveBeenCalled()
 	})
 
 	it('should report date changes', () => {
-		expect(spy).toNotHaveBeenCalled()
+		expect(props.onChange).toNotHaveBeenCalled()
 		picker.find('DatePicker').simulate('change')
-		expect(spy).toHaveBeenCalled()
+		expect(props.onChange).toHaveBeenCalled()
 	})
 
 	it('should report correct date on change', () => {
 		const date = new Date('2020 12 31')
 
 		picker.find('DatePicker').props().onChange(null, date)
-		const updatedDate = spy.calls[0].arguments[0]
+		const updatedDate = props.onChange.calls[0].arguments[0]
 
 		expect(updatedDate.getFullYear()).toBe(2020)
 		expect(updatedDate.getMonth()).toBe(11) // 'cause JS month off by one
@@ -40,7 +45,7 @@ describe('<DateTimePicker />', function () {
 		const time = new Date('1970 01 01 4:20')
 
 		picker.find('TimePicker').props().onChange(null, time)
-		const updatedTime = spy.calls[0].arguments[0]
+		const updatedTime = props.onChange.calls[0].arguments[0]
 
 		expect(updatedTime.getHours()).toBe(4)
 		expect(updatedTime.getMinutes()).toBe(20)
@@ -52,7 +57,7 @@ describe('<DateTimePicker />', function () {
 
 		picker.find('DatePicker').props().onChange(null, date)
 		picker.find('TimePicker').props().onChange(null, time)
-		const updatedDateTime = spy.calls[1].arguments[0]
+		const updatedDateTime = props.onChange.calls[1].arguments[0]
 
 		expect(updatedDateTime.getFullYear()).toBe(2020)
 		expect(updatedDateTime.getMonth()).toBe(11) // 'cause JS month off by one

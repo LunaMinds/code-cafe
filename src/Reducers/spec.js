@@ -43,12 +43,13 @@ describe('reducer', () => {
 		expect(state).toContain(initial)
 	})
 
-	it('sets event name', () => {
+	it('patches the event name', () => {
 		const name = 'Biggest Bacon Binge in the Known and Unknown Universe'
 		const action = Actions.setEventName(name)
-		const state = reducer(undefined, action)
+		const state = reducer({ existing: true }, action)
 
 		expect(state).toEqual({
+			existing: true,
 			name,
 		})
 	})
