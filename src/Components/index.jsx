@@ -1,4 +1,6 @@
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import UIProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
@@ -21,7 +23,7 @@ injectTapEventPlugin()
 import Home from './Home/index.jsx'
 const entry = (
   <Provider store={store}>
-    <UIProvider>
+    <UIProvider muiTheme={getMuiTheme(lightBaseTheme)}>
       <Home />
     </UIProvider>
   </Provider>

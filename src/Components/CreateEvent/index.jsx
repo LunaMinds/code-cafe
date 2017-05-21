@@ -1,4 +1,5 @@
 import DateTimeRange from '../DateTimeRange/index.jsx'
+import RaisedButton from 'material-ui/RaisedButton'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -60,7 +61,13 @@ export class CreateEvent extends React.Component {
 					<Title htmlFor='notes'>Notes</Title>
 					<input name='notes' type='text'></input>
 					<br />
-					<button type="submit" onClick={this.createEvent}>Create my awesome event</button>
+					<RaisedButton
+						primary
+						type="submit"
+						onClick={this.createEvent}
+					>
+						Create
+					</RaisedButton>
 				</form>
 			</div>
 		)
