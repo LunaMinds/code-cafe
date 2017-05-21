@@ -8,3 +8,7 @@ export const setEventName = (name) => ({
 	type: 'SET_EVENT_NAME',
 	name,
 })
+
+export const createEvent = () => ({
+	type: 'CREATE_EVENT',
+})

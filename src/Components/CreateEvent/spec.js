@@ -10,17 +10,20 @@ describe('<CreateEvent>', () => {
 	beforeEach(() => {
 		props = {
 			setEventName: createSpy(),
+			createEvent: createSpy(),
 			id: 'create',
 		}
 	})
 
 	describe('select', () => {
 		it('returns the correct data', () => {
-			const state = { name: 'My event name', unrelated: true }
+			const state = { name: 'My event name', unrelated: true, start: 1, end: 42 }
 			const result = select(state)
 
 			expect(result).toEqual({
+				end: state.end,
 				eventName: state.name,
+				start: state.start,
 			})
 		})
 	})
@@ -45,5 +48,33 @@ describe('<CreateEvent>', () => {
 		const value = setup().find('input').filter({name: 'eventName'}).prop('value')
 
 		expect(value).toBe(props.eventName)
+	})
+
+	describe('submit button', () => {
+		const createHtmlEvent = () => ({
+			preventDefault: createSpy(),
+			stopPropagation: createSpy(),
+		})
+
+		it('calls create event action', () => {
+			const event = createHtmlEvent()
+			props.start = 1
+			props.end = 42
+			props.eventName = 'Festival of Sweet Potatoes and Bacon Awesomeness'
+			setup().find('button').filter({type: 'submit'}).simulate('click', event)
+			expect(props.createEvent).toHaveBeenCalled()
+			expect(props.createEvent).toHaveBeenCalledWith({
+				start: props.start,
+				end: props.end,
+				eventName: props.eventName,
+			})
+		})
+
+		it('prevents reload', () => {
+			const event = createHtmlEvent()
+			setup().find('button').filter({type: 'submit'}).simulate('click', event)
+			expect(event.preventDefault).toHaveBeenCalled()
+			expect(event.stopPropagation).toHaveBeenCalled()
+		})
 	})
 })

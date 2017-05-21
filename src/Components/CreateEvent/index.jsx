@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { setEventName } from '../../Actions'
+import { setEventName, createEvent } from '../../Actions'
 
 export const Title = styled.label`
 	&::after {
@@ -14,8 +14,11 @@ export const Title = styled.label`
 
 export class CreateEvent extends React.Component {
 	static propTypes = {
-		setEventName: PropTypes.func.isRequired,
+		createEvent: PropTypes.func.isRequired,
+		end: PropTypes.number,
 		eventName: PropTypes.string,
+		setEventName: PropTypes.func.isRequired,
+		start: PropTypes.number,
 	}
 
 	static defaultProps = {
@@ -56,6 +59,8 @@ export class CreateEvent extends React.Component {
 					<br />
 					<Title htmlFor='notes'>Notes</Title>
 					<input name='notes' type='text'></input>
+					<br />
+					<button type="submit" onClick={this.createEvent}>Create my awesome event</button>
 				</form>
 			</div>
 		)
@@ -64,12 +69,22 @@ export class CreateEvent extends React.Component {
 	updateEventName = ({ target }) => {
 		this.props.setEventName(target.value)
 	}
+
+	createEvent = (event) => {
+		const {start, end, eventName} = this.props
+		event.preventDefault()
+		event.stopPropagation()
+		this.props.createEvent({start, end, eventName})
+	}
 }
 
 export const select = (state) => ({
+	end: state.end,
 	eventName: state.name,
+	start: state.start,
 })
 
 export default connect(select, {
 	setEventName,
+	createEvent,
 })(CreateEvent)
