@@ -1,3 +1,4 @@
+import RaisedButton from 'material-ui/RaisedButton'
 import { CreateEvent, select } from './index'
 import expect, { createSpy } from 'expect'
 import { shallow } from 'enzyme'
@@ -61,7 +62,7 @@ describe('<CreateEvent>', () => {
 			props.start = 1
 			props.end = 42
 			props.eventName = 'Festival of Sweet Potatoes and Bacon Awesomeness'
-			setup().find('button').filter({type: 'submit'}).simulate('click', event)
+			setup().find(RaisedButton).filter({type: 'submit'}).simulate('click', event)
 			expect(props.createEvent).toHaveBeenCalled()
 			expect(props.createEvent).toHaveBeenCalledWith({
 				start: props.start,
@@ -72,7 +73,7 @@ describe('<CreateEvent>', () => {
 
 		it('prevents reload', () => {
 			const event = createHtmlEvent()
-			setup().find('button').filter({type: 'submit'}).simulate('click', event)
+			setup().find(RaisedButton).filter({type: 'submit'}).simulate('click', event)
 			expect(event.preventDefault).toHaveBeenCalled()
 			expect(event.stopPropagation).toHaveBeenCalled()
 		})
