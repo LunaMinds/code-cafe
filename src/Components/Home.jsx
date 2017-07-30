@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import CreateEvent from '../CreateEvent/index.jsx'
+import CreateEvent from './CreateEvent.jsx'
 
 class Home extends Component {
 	render () {

@@ -3,7 +3,7 @@ import TimePicker from 'material-ui/TimePicker'
 import DatePicker from 'material-ui/DatePicker'
 import createDateTime from './createDateTime'
 
-class DateTimePicker extends Component {
+export class DateTimePicker extends Component {
 	constructor (props) {
 		super(props)
 
