@@ -1,8 +1,7 @@
-/* eslint-env mocha */
 import expect from 'expect'
 
-import * as Actions from '../Actions'
-import reducer from './index'
+import * as Actions from '../../Actions'
+import reducer from '../index'
 
 describe('reducer', () => {
 	it('sets event times', () => {

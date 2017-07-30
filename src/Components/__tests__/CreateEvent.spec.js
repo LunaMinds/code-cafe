@@ -1,5 +1,5 @@
 import RaisedButton from 'material-ui/RaisedButton'
-import { CreateEvent, select } from './index'
+import { CreateEvent, select } from '../CreateEvent.jsx'
 import expect, { createSpy } from 'expect'
 import { shallow } from 'enzyme'
 import React from 'react'

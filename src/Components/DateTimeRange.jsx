@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import moment from 'moment'
 import { connect } from 'react-redux'
 
-import DateTimePicker from '../DateTimePicker/index.jsx'
-import { setEventTimes } from '../../Actions/index.js'
+import DateTimePicker from './DateTimePicker/index.jsx'
+import { setEventTimes } from '../Actions/index.js'
 
 // exported for testing purposes
 export class DateTimeRange extends Component {

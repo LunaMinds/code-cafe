@@ -1,15 +1,14 @@
-/* eslint-env mocha */
 import React from 'react'
 import expect, { createSpy } from 'expect'
 import { shallow } from 'enzyme'
-import DateTimePicker from './index'
 
-describe('<DateTimePicker />', function () {
+import { DateTimePicker } from '../DateTimePicker/index.jsx'
+
+describe('<DateTimePicker>', function () {
 	let props, picker
 	const setup = () => shallow(<DateTimePicker {...props} />)
 
-	beforeEach('setup spy and picker', () => {
-		// mock out the onChange of the main component
+	beforeEach(() => {
 		props = {
 			id: 'date-time-picker',
 			onChange: createSpy(),

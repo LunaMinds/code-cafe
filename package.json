@@ -7,8 +7,8 @@
   "description": "Ad-hoc meetups for social programming",
   "main": "src/Server/index.js",
   "scripts": {
-    "test": "mocha 'src/**/*spec.js' --opts ./mocha.opts --require ./tests/jsdom-setup.js",
-    "tdd": "npm test -- --watch --reporter min",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint src/**/*.{js,jsx}",
     "dev": "node dev-server.js",
     "build": "webpack",
@@ -56,6 +56,7 @@
     "eslint-plugin-react": "^6.1.2",
     "eslint-plugin-standard": "^2.0.0",
     "expect": "^1.20.2",
+    "jest": "^20.0.4",
     "jsdom": "^9.9.1",
     "mocha": "^3.0.2",
     "nightwatch": "^0.9.12",
@@ -65,5 +66,10 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"
-  }
+  },
+	"jest": {
+		"setupFiles": [
+			"./tests/jsdom-setup.js"
+		]
+	}
 }

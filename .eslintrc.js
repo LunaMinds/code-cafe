@@ -9,7 +9,7 @@ eslint.parser = 'babel-eslint'
 
 eslint.env = {
 	browser: true,
-	mocha: true,
+	jest: true,
 }
 
 eslint.plugins = [

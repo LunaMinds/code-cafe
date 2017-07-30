@@ -1,11 +1,11 @@
-import DateTimeRange from '../DateTimeRange/index.jsx'
+import DateTimeRange from './DateTimeRange.jsx'
 import RaisedButton from 'material-ui/RaisedButton'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { setEventName, createEvent } from '../../Actions'
+import { setEventName, createEvent } from '../Actions'
 
 export const Title = styled.label`
 	&::after {
