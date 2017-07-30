@@ -11,6 +11,7 @@ describe('<CreateEvent>', () => {
 		props = {
 			setEventName: jest.fn(),
 			createEvent: jest.fn(),
+			mutate: jest.fn(),
 			id: 'create',
 		}
 	})

@@ -1,5 +1,5 @@
 # project: cj5r6vi6wr2ow0122qppic7dq
-# version: 2
+# version: 3
 
 type File implements Node {
   contentType: String!
@@ -19,9 +19,9 @@ type User implements Node {
 }
 
 type Event implements Node {
-  eventName: String!
-  start: Int!
-  end: Int!
+  title: String!
+  start: DateTime!
+  end: DateTime!
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
