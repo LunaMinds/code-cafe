@@ -1,5 +1,3 @@
-import expect from 'expect'
-
 import * as Actions from '../../Actions'
 import reducer from '../index'
 
@@ -39,7 +37,7 @@ describe('reducer', () => {
 		const action = Actions.setEventTimes({end: 3})
 		const state = reducer(initial, action)
 
-		expect(state).toContain(initial)
+		expect(state).toEqual(expect.objectContaining(initial))
 	})
 
 	it('patches the event name', () => {

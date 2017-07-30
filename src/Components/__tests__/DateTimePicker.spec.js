@@ -1,5 +1,4 @@
 import React from 'react'
-import expect, { createSpy } from 'expect'
 import { shallow } from 'enzyme'
 
 import { DateTimePicker } from '../DateTimePicker/index.jsx'
@@ -11,20 +10,20 @@ describe('<DateTimePicker>', function () {
 	beforeEach(() => {
 		props = {
 			id: 'date-time-picker',
-			onChange: createSpy(),
+			onChange: jest.fn(),
 		}
 
 		picker = setup()
 	})
 
 	it('should report time changes', () => {
-		expect(props.onChange).toNotHaveBeenCalled()
+		expect(props.onChange).not.toHaveBeenCalled()
 		picker.find('TimePicker').simulate('change')
 		expect(props.onChange).toHaveBeenCalled()
 	})
 
 	it('should report date changes', () => {
-		expect(props.onChange).toNotHaveBeenCalled()
+		expect(props.onChange).not.toHaveBeenCalled()
 		picker.find('DatePicker').simulate('change')
 		expect(props.onChange).toHaveBeenCalled()
 	})
@@ -33,7 +32,7 @@ describe('<DateTimePicker>', function () {
 		const date = new Date('2020 12 31')
 
 		picker.find('DatePicker').props().onChange(null, date)
-		const updatedDate = props.onChange.calls[0].arguments[0]
+		const [updatedDate] = props.onChange.mock.calls[0]
 
 		expect(updatedDate.getFullYear()).toBe(2020)
 		expect(updatedDate.getMonth()).toBe(11) // 'cause JS month off by one
@@ -44,7 +43,7 @@ describe('<DateTimePicker>', function () {
 		const time = new Date('1970 01 01 4:20')
 
 		picker.find('TimePicker').props().onChange(null, time)
-		const updatedTime = props.onChange.calls[0].arguments[0]
+		const [updatedTime] = props.onChange.mock.calls[0]
 
 		expect(updatedTime.getHours()).toBe(4)
 		expect(updatedTime.getMinutes()).toBe(20)
@@ -56,7 +55,7 @@ describe('<DateTimePicker>', function () {
 
 		picker.find('DatePicker').props().onChange(null, date)
 		picker.find('TimePicker').props().onChange(null, time)
-		const updatedDateTime = props.onChange.calls[1].arguments[0]
+		const [updatedDateTime] = props.onChange.mock.calls[1]
 
 		expect(updatedDateTime.getFullYear()).toBe(2020)
 		expect(updatedDateTime.getMonth()).toBe(11) // 'cause JS month off by one

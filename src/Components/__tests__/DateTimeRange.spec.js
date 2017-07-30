@@ -1,5 +1,4 @@
 import React from 'react'
-import expect, { createSpy } from 'expect'
 import { shallow } from 'enzyme'
 
 import { DateTimeRange } from '../DateTimeRange.jsx'
@@ -10,7 +9,7 @@ describe('<DateTimeRange>', () => {
 
 	beforeEach(() => {
 		props = {
-			setEventTimes: createSpy(),
+			setEventTimes: jest.fn(),
 			start: 123,
 			end: 456,
 		}
@@ -23,7 +22,7 @@ describe('<DateTimeRange>', () => {
 
 		expect(props.setEventTimes).toHaveBeenCalled()
 
-		const {start, end} = props.setEventTimes.calls[0].arguments[0]
+		const [{start, end}] = props.setEventTimes.mock.calls[0]
 		const hour = 1000 * 60 * 60
 
 		expect(end - start).toBe(hour)
@@ -33,7 +32,6 @@ describe('<DateTimeRange>', () => {
 		const date = new Date(123)
 		range.find('DateTimePicker').at(0).simulate('change', date)
 
-		expect(props.setEventTimes).toHaveBeenCalled()
 		expect(props.setEventTimes).toHaveBeenCalledWith({
 			start: date.getTime(),
 		})
@@ -54,23 +52,23 @@ describe('<DateTimeRange>', () => {
 
 		expect(props.setEventTimes).toHaveBeenCalled()
 
-		const {start, end} = props.setEventTimes.calls[0].arguments[0]
+		const [{start, end}] = props.setEventTimes.mock.calls[0]
 
-		expect(start).toBeA('number')
-		expect(end).toBeA('number')
+		expect(start).toEqual(expect.any(Number))
+		expect(end).toEqual(expect.any(Number))
 	})
 
 	it('uses the correct start date time', () => {
 		const dateTime = range.find('DateTimePicker').at(0).prop('value')
 
-		expect(dateTime).toBeA(Date)
+		expect(dateTime).toEqual(expect.any(Date))
 		expect(dateTime.getTime()).toBe(props.start)
 	})
 
 	it('uses the correct end date time', () => {
 		const dateTime = range.find('DateTimePicker').at(1).prop('value')
 
-		expect(dateTime).toBeA(Date)
+		expect(dateTime).toEqual(expect.any(Date))
 		expect(dateTime.getTime()).toBe(props.end)
 	})
 
