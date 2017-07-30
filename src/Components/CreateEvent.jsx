@@ -1,9 +1,11 @@
 import DateTimeRange from './DateTimeRange.jsx'
 import RaisedButton from 'material-ui/RaisedButton'
+import { graphql, gql } from 'react-apollo'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import React from 'react'
+import moment from 'moment'
 
 import { setEventName, createEvent } from '../Actions'
 
@@ -19,6 +21,7 @@ export class CreateEvent extends React.Component {
 		end: PropTypes.number,
 		eventName: PropTypes.string,
 		setEventName: PropTypes.func.isRequired,
+		mutate: PropTypes.func.isRequired,
 		start: PropTypes.number,
 	}
 
@@ -82,6 +85,14 @@ export class CreateEvent extends React.Component {
 		event.preventDefault()
 		event.stopPropagation()
 		this.props.createEvent({start, end, eventName})
+
+		this.props.mutate({
+			variables: {
+				title: eventName,
+				start: moment(start).toISOString(),
+				end: moment(end).toISOString(),
+			},
+		})
 	}
 }
 
@@ -91,7 +102,21 @@ export const select = (state) => ({
 	start: state.start,
 })
 
-export default connect(select, {
-	setEventName,
-	createEvent,
-})(CreateEvent)
+const createNewEvent = gql`
+mutation createEvent($title: String!, $start: DateTime!, $end: DateTime!) {
+	createEvent(
+		title: $title
+		start: $start
+		end: $end
+	) {
+		title
+	}
+}
+`
+
+export default graphql(createNewEvent)(
+	connect(select, {
+		setEventName,
+		createEvent,
+	})(CreateEvent)
+)

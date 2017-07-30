@@ -17,6 +17,7 @@ const client = new ApolloClient({
 	}),
 })
 
+import Home from './Home.jsx'
 import reduxer from '../Reducers'
 
 const store = createStore(
@@ -30,7 +31,6 @@ const store = createStore(
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
-import Home from './Home.jsx'
 const entry = (
 	<ApolloProvider client={client} store={store}>
 		<UIProvider muiTheme={getMuiTheme(lightBaseTheme)}>
