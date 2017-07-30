@@ -1,6 +1,5 @@
 import RaisedButton from 'material-ui/RaisedButton'
 import { CreateEvent, select } from '../CreateEvent.jsx'
-import expect, { createSpy } from 'expect'
 import { shallow } from 'enzyme'
 import React from 'react'
 
@@ -10,8 +9,8 @@ describe('<CreateEvent>', () => {
 
 	beforeEach(() => {
 		props = {
-			setEventName: createSpy(),
-			createEvent: createSpy(),
+			setEventName: jest.fn(),
+			createEvent: jest.fn(),
 			id: 'create',
 		}
 	})
@@ -39,7 +38,6 @@ describe('<CreateEvent>', () => {
 
 		setup().find('input').filter({name: 'eventName'}).simulate('input', event)
 
-		expect(props.setEventName).toHaveBeenCalled()
 		expect(props.setEventName).toHaveBeenCalledWith(value)
 	})
 
@@ -53,8 +51,8 @@ describe('<CreateEvent>', () => {
 
 	describe('submit button', () => {
 		const createHtmlEvent = () => ({
-			preventDefault: createSpy(),
-			stopPropagation: createSpy(),
+			preventDefault: jest.fn(),
+			stopPropagation: jest.fn(),
 		})
 
 		it('calls create event action', () => {
@@ -63,7 +61,6 @@ describe('<CreateEvent>', () => {
 			props.end = 42
 			props.eventName = 'Festival of Sweet Potatoes and Bacon Awesomeness'
 			setup().find(RaisedButton).filter({type: 'submit'}).simulate('click', event)
-			expect(props.createEvent).toHaveBeenCalled()
 			expect(props.createEvent).toHaveBeenCalledWith({
 				start: props.start,
 				end: props.end,
